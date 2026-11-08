@@ -396,3 +396,8 @@ body.light .friend .fav i { border-color: #fff; }
 .sk-lib-item span { font-size: 12px; font-weight: 600; }
 .sk-lib-item .btn { position: absolute; top: 6px; right: 6px; }
 body.light .sk-canvas-wrap { background: rgba(13,19,36,.08); }
+
+/* macOS: родные кнопки окна слева */
+body.mac .win-btn { display: none; }
+body.mac #sidebar { top: 46px; }
+body.mac #titlebar .title { left: 120px; }

@@ -758,6 +758,7 @@ document.addEventListener('error', (e) => { const t = e.target; if (t && t.tagNa
 // ---------- старт ----------
 function sfx() { }
 window.addEventListener('DOMContentLoaded', async () => {
+  if (/Mac/.test(navigator.platform)) document.body.classList.add('mac');
   try { S.cfg = await call('config:get'); } catch (e) { console.error('config:get ' + e.message); S.cfg = {}; }
   try { applyTheme(); } catch (e) { console.error('theme ' + e.stack); }
   try { await loadInstances(); } catch (e) { console.error('instances ' + e.stack); toast(e.message, true); }
