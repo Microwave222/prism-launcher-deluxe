@@ -1,0 +1,12 @@
+{
+  "name": "prism-launcher-deluxe",
+  "productName": "Prism Launcher Deluxe",
+  "version": "1.0.0",
+  "description": "Liquid Glass launcher on top of Prism Launcher",
+  "main": "main.js",
+  "author": "Eng1nfine",
+  "license": "GPL-3.0",
+  "scripts": {
+    "start": "electron ."
+  }
+}
