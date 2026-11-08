@@ -769,8 +769,10 @@ const ctx = {
 require('./features')(ctx);
 
 function createWindow() {
+  const mac = process.platform === 'darwin';
   win = new BrowserWindow({
-    width: 1280, height: 800, minWidth: 1040, minHeight: 660, frame: false, show: false,
+    width: 1280, height: 800, minWidth: 1040, minHeight: 660, show: false,
+    ...(mac ? { titleBarStyle: 'hiddenInset', trafficLightPosition: { x: 18, y: 18 } } : { frame: false }),
     backgroundColor: '#070a12', title: 'Prism Launcher Deluxe',
     icon: nativeImage.createFromPath(path.join(__dirname, 'assets', 'icon.png')),
     webPreferences: { preload: path.join(__dirname, 'preload.js'), contextIsolation: true, nodeIntegration: false, sandbox: true, backgroundThrottling: true, spellcheck: false }
@@ -804,6 +806,11 @@ app.on('second-instance', () => { if (win) { if (win.isMinimized()) win.restore(
 
 app.whenReady().then(() => {
   if (!gotLock) return;
+  if (process.platform === 'darwin') {
+    // на macOS без меню не работают ⌘C/⌘V/⌘Q
+    const { Menu } = require('electron');
+    Menu.setApplicationMenu(Menu.buildFromTemplate([{ role: 'appMenu' }, { role: 'editMenu' }, { role: 'windowMenu' }]));
+  }
   for (const f of logFiles()) { try { fs.writeFileSync(f, ''); } catch { } }
   cfg = loadCfg();
   createWindow();
