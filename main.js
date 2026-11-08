@@ -101,9 +101,13 @@ function detectPrism() {
     env.ProgramFiles && path.join(env.ProgramFiles, 'PrismLauncher', 'prismlauncher.exe'),
     env['ProgramFiles(x86)'] && path.join(env['ProgramFiles(x86)'], 'PrismLauncher', 'prismlauncher.exe'),
     env.LOCALAPPDATA && path.join(env.LOCALAPPDATA, 'Microsoft', 'WinGet', 'Links', 'prismlauncher.exe'),
-    '/usr/bin/prismlauncher', '/usr/local/bin/prismlauncher', '/Applications/Prism Launcher.app/Contents/MacOS/prismlauncher'
+    '/usr/bin/prismlauncher', '/usr/local/bin/prismlauncher', '/Applications/Prism Launcher.app/Contents/MacOS/prismlauncher',
+    path.join(os.homedir(), 'Applications', 'Prism Launcher.app', 'Contents', 'MacOS', 'prismlauncher'),
+    path.join(os.homedir(), 'Downloads', 'Prism Launcher.app', 'Contents', 'MacOS', 'prismlauncher')
   ].filter(Boolean);
-  const exe = exeCandidates.find(exists) || '';
+  let exe = exeCandidates.find(exists) || '';
+  // macOS: путь к .app — берём исполняемый файл внутри пакета
+  if (/\.app\/?$/i.test(exe)) { const inner = path.join(exe, 'Contents', 'MacOS', 'prismlauncher'); if (exists(inner)) exe = inner; }
   const dataCandidates = [
     cfg.prismData,
     env.DELUXE_PRISM_DATA,
