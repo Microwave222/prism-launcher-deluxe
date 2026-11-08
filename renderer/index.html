@@ -1,0 +1,34 @@
+<!doctype html>
+<html lang="ru">
+<head>
+<meta charset="utf-8">
+<meta http-equiv="Content-Security-Policy" content="default-src 'self'; img-src 'self' file: https: data:; style-src 'self' 'unsafe-inline'; script-src 'self'">
+<title>Prism Launcher Deluxe</title>
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<div id="bg"><div class="blob b1"></div><div class="blob b2"></div><div class="blob b3"></div><div class="blob b4"></div><div class="shade"></div><div class="grain"></div></div>
+<div id="titlebar">
+  <span class="title">Prism Launcher Deluxe</span>
+  <button class="win-btn glass spring" data-act="win:min" aria-label="Свернуть"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" aria-hidden="true"><path d="M5 12h14"/></svg></button>
+  <button class="win-btn glass spring" data-act="win:max" aria-label="Развернуть"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" aria-hidden="true"><rect x="5" y="5" width="14" height="14" rx="3"/></svg></button>
+  <button class="win-btn glass spring close" data-act="win:close" aria-label="Закрыть"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" aria-hidden="true"><path d="M6 6l12 12M18 6L6 18"/></svg></button>
+</div>
+<div id="app">
+  <nav id="sidebar" class="glass" aria-label="Разделы">
+    <img class="logo" src="../assets/icon.png" alt="Prism Launcher Deluxe">
+    <div id="nav"></div>
+    <div class="spacer"></div>
+    <button class="acc spring" id="accBtn" data-act="go" data-page="accounts" aria-label="Аккаунты"></button>
+  </nav>
+  <main id="main"></main>
+</div>
+<div id="overlay"></div>
+<div id="toasts" role="status" aria-live="polite"></div>
+<div id="tasks"></div>
+<script src="bg.js"></script>
+<script src="app.js"></script>
+<script src="ui2.js"></script>
+<script src="skin.js"></script>
+</body>
+</html>
